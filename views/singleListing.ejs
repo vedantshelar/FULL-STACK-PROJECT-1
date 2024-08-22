@@ -1,0 +1,135 @@
+<%- layout('./layout/boilureplate') %>
+
+    <body>
+        <div class="singleListingMainContainer">
+            <div class="singleListingHeadingBox">
+                <h1>Listing</h1>
+            </div>
+            <div class="singleListingContainer">
+                <div id="imgSlider" class="carousel slide">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#imgSlider" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#imgSlider" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#imgSlider" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#imgSlider" data-bs-slide-to="3"
+                            aria-label="Slide 4"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="<%=singleListing.listingImages[0].link%>" class="d-block w-100 listingImages"
+                                alt="listingImage1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<%=singleListing.listingImages[1].link%>" class="d-block w-100 listingImages"
+                                alt="listingImage2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<%=singleListing.listingImages[2].link%>" class="d-block w-100 listingImages"
+                                alt="listingImage3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<%=singleListing.listingImages[3].link%>" class="d-block w-100 listingImages"
+                                alt="listingImage4">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#imgSlider"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#imgSlider"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <div class="singleListingInfoBox">
+                    <h5>
+                        <%=singleListing.description%> 
+                    </h5>
+                    <b>Created-By : <%=singleListing.owner.username%></b> <br>
+                    <b>Phone Number : <%=singleListing.owner.phone%></b>
+                    <p>$<%=singleListing.price %>/month</p>
+                    <p>
+                        Country : <%= singleListing.country %>
+                    </p>
+                    <p>
+                        City : <%= singleListing.city %>
+                    </p>
+                    <p>
+                       Address : <%= singleListing.location %>
+                    </p>
+                </div>
+                <div class="singleListingButtonBox">
+                    <form action="/list/<%= singleListing._id %>/edit" method="get">
+                        <button class="editBtn">Edit</button>
+                    </form>
+                    <form action="/list/<%=singleListing._id%>?_method=DELETE" method="post">
+                        <button class="deleteBtn">Delete</button>
+                    </form>
+                </div>
+                <hr>
+                <div class="reviewMainContainer">
+                    <h4>Leave a Review</h4>
+                    <form action="/list/<%=singleListing._id%>/review/new" method="post" class="reviewContainer">
+                        <div>
+                            <fieldset class="starability-basic ratingBox">
+                                <input type="radio" id="first-rate1" name="rating" value="1" checked />
+                                <label for="first-rate1" title="Terrible">1 star</label>
+                                <input type="radio" id="first-rate2" name="rating" value="2" />
+                                <label for="first-rate2" title="Not good">2 stars</label>
+                                <input type="radio" id="first-rate3" name="rating" value="3" />
+                                <label for="first-rate3" title="Average">3 stars</label>
+                                <input type="radio" id="first-rate4" name="rating" value="4" />
+                                <label for="first-rate4" title="Very good">4 stars</label>
+                                <input type="radio" id="first-rate5" name="rating" value="5" />
+                                <label for="first-rate5" title="Amazing">5 stars</label>
+                            </fieldset>
+                        </div> 
+                        <div class="reviewCommentBox">
+                            <p class="mb-0">Comment</p>
+                            <textarea name="comment" id="commentBox"></textarea>
+                        </div>
+                        <button type="submit" id="reviewSubmitBtn">Submit</button>
+                    </form>
+                </div>
+                <hr>
+            </div>
+            <h4>All Reviews</h4>
+            <div class="allReviewContainer">
+                <% if(singleListing.reviews.length>=1) { %>
+
+                    <% for(review of singleListing.reviews) { %>
+                        <div class="reviewCard">
+                            <h5 class="">
+                                <%= review.author.username %>
+                            </h5>
+                            <p class="mb-0">
+                                <%= review.comment %>
+                            </p>
+                            <div>
+                                <span>
+                                    <p class="starability-result" data-rating="<%= review.rating %>">
+                                        Rated: <%= review.rating %> stars
+                                      </p>
+                                </span>
+                                <span> 
+                                    <%= review.createdAt %>
+                                </span>
+                            </div>
+                            <% if(currUser && currUser._id.equals(review.author._id)) { %>
+                                <form class="reviewButtonGroup" method="post"
+                                    action="/review/<%=review._id%>/<%=singleListing._id%>?_method=DELETE">
+                                    <button type="submit">delete</button>
+                                </form>
+                                <% } %>
+                        </div>
+                        <% } %>
+
+                            <% } %>
+            </div>
+        </div>
+    </body>

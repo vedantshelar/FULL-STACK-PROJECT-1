@@ -1,0 +1,74 @@
+<%- layout('./layout/boilureplate.ejs') %>
+
+    <div class="container-fluid mt-3 mb-3">
+
+        <form method="post" action="/list/new" enctype="multipart/form-data">
+            <h1 style="color: rgb(80, 80, 80);">Add Your Place</h1>
+            <div class="mb-3">
+                <label for="email" class="form-label">Title</label>
+                <input type="text" class="form-control" id="email" name="title" aria-describedby="emailHelp">
+            </div> 
+            <div class="mb-3"> 
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="listingImage1" class="form-label">Upload Image-1</label> 
+                <input class="form-control" type="file" name="listingImage1" id="listingImage1" required>
+            </div>
+            <div class="mb-3">
+                <label for="listingImage2" class="form-label">Upload Image-2</label> 
+                <input class="form-control" type="file" name="listingImage2" id="listingImage2" required>
+            </div>
+            <div class="mb-3">
+                <label for="listingImage3" class="form-label">Upload Image-3</label> 
+                <input class="form-control" type="file" name="listingImage3" id="listingImage3" required>
+            </div>
+            <div class="mb-3">
+                <label for="listingImage4" class="form-label">Upload Image-4</label> 
+                <input class="form-control" type="file" name="listingImage4" id="listingImage4" required>
+            </div> 
+            <div class="row"> 
+                <div class="col-sm-5"> 
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="price" name="price" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="mb-3">
+                        <label for="country" class="form-label">Country</label>
+                        <input type="text" class="form-control" id="country" name="country" aria-describedby="countryHelp">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="mb-3">
+                        <label for="city" class="form-label">City</label>
+                        <input type="text" class="form-control" id="city" name="city" aria-describedby="cityHelp">
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <label for="category" class="form-label">Category</label>
+                    <select class="form-select" name="category" id="category">
+                        <option value="cities">cities</option>
+                        <option value="farms">farms</option>
+                        <option value="beachfront">beachfront</option>
+                        <option value="lakefront">lakefront</option>
+                        <option value="camping">camping</option>
+                        <option value="mountain">mountain</option>
+                        <option value="town">town</option>
+                        <option value="tower">tower</option>
+                        <option value="others">others</option>
+                      </select>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" name="location" aria-describedby="emailHelp">
+            </div> 
+            <button type="submit" class="btn" style="color: white; background-color: rgb(231, 83, 83);">Add New Listing</button>
+        </form>
+
+    </div>

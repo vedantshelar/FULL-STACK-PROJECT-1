@@ -1,0 +1,10 @@
+html {
+    font-size: 16px;
+}
+ 
+#filterForm {
+    border: 1px solid black;
+    width: 50vw;
+    margin: 30px auto;
+    padding: 10px 10px;
+}
