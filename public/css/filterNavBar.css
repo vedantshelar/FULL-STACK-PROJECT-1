@@ -1,29 +1,30 @@
-.filterNavBar{
+.filterNavBar {
     border: 1px solid rgba(172, 172, 172, 0.151);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.optionsBox{
+
+.optionsBox {
     display: flex;
     flex-direction: row;
     width: 55%;
     overflow-x: auto;
-    box-shadow: inset 0px 0px 5px rgba(168, 168, 168, 0.459); 
+    box-shadow: inset 0px 0px 5px rgba(168, 168, 168, 0.459);
 }
-
-.optionsBox::-webkit-scrollbar{
+ 
+.optionsBox::-webkit-scrollbar {
     background-color: rgb(0, 0, 0);
     height: 5px;
 }
 
-.optionsBox::-webkit-scrollbar-thumb{
+.optionsBox::-webkit-scrollbar-thumb {
     background-color: rgb(141, 141, 141);
     border-radius: 20px;
     cursor: grabbing;
 }
 
-.option{
+.option {
     border: 1px solid rgba(54, 40, 40, 0.075);
     text-decoration: none;
     color: black;
@@ -38,21 +39,21 @@
     cursor: pointer;
 }
 
-.active{
-    display:none;
+.active {
+    display: none;
 }
 
-.taxSwitchAndFilterContainer{
+.taxSwitchAndFilterContainer {
     width: 35%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content:flex-end;
+    justify-content: flex-end;
     padding-right: 15px;
 
 }
 
-.taxSwitchBox{
+.taxSwitchBox {
     border: 1px solid rgba(121, 121, 121, 0.233);
     padding: 10px 15px;
     border-radius: 20px;
@@ -60,16 +61,17 @@
     margin-right: 15px;
 }
 
-.taxSwitchBox > div > label , .taxSwitchBox > div > input{
-   cursor: pointer;
+.taxSwitchBox>div>label,
+.taxSwitchBox>div>input {
+    cursor: pointer;
 }
 
-.filterBox{
+.filterBox {
     border: 1px solid rgba(121, 121, 121, 0.233);
     width: 25%;
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     padding: 5px 10px;
     border-radius: 20px;
     cursor: pointer;
@@ -77,7 +79,7 @@
     color: black;
 }
 
-.filterBox > h5{
-    font-size:1.2rem;
+.filterBox>h5 {
+    font-size: 1.2rem;
     margin-right: 5px;
 }

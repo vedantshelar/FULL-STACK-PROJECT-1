@@ -1,0 +1,136 @@
+@media only screen and (max-width:1000px) {
+
+    html {
+        font-size: 13px;
+    }
+
+    .taxSwitchAndFilterContainer {
+        width: 40%;
+        padding-right: 10px;
+        justify-content: space-around;
+    }
+
+    .taxSwitchBox {
+        width: 70%;
+        border-radius: 10px;
+    }
+
+    .taxSwitchBox>div {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .taxSwitchBox>div>label {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .filterBox {
+        width: 25%;
+    }
+
+    .filterBox>h5 {
+        font-size: 1rem;
+        margin-right: 5px;
+    }
+
+    .filterBox>i {
+        font-size: 0.9rem;
+    }
+
+}
+
+@media only screen and (max-width:750px) {
+
+    html {
+        font-size: 12px;
+    }
+
+    .filterNavBar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 70px;
+    }
+
+    .option {
+        width: 300px;
+    }
+
+    .filterBox {
+        width: 25%;
+        border-radius: 10px;
+        height: 90%;
+    }
+
+    .filterBox>h5 {
+        font-size: 1rem;
+        margin-right: 0px;
+    }
+
+    .filterBox>i {
+        display: none;
+    }
+
+}
+
+
+@media only screen and (max-width:550px) {
+
+    html {
+        font-size: 10px;
+    }
+
+    .filterNavBar {
+        display: flex;
+        flex-direction: column;
+    }
+ 
+    .taxSwitchAndFilterContainer {
+        width: 70%;
+        padding-right: 0px;
+        justify-content: space-around;
+        margin: auto;
+        height: 40%;
+        padding-right: 0px;
+    }
+
+    .taxSwitchBox {
+        width: 70%;
+        border-radius: 10px;
+        height: 90%;
+        align-items: flex-start;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .taxSwitchBox>div {
+        width: 100%;
+        height: 100%;
+    }
+
+    .optionsBox {
+        align-items: center;
+        width: 100%;
+        height: 55%;
+        overflow-y: hidden;
+    }
+
+    .optionsBox::-webkit-scrollbar {
+        height: 0px;
+    }
+
+    .option {
+        width: 200px;
+        height: 100%;
+        padding: 2px 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+
+
+}

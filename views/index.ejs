@@ -1,8 +1,8 @@
 <%- layout('./layout/boilureplate') %>
 
     <body> 
-        <%- include('./includes/filterNavBar.ejs') %>
-        <h1>All Listings</h1>
+        <%- include('./includes/filterNavBar.ejs') %> 
+        <h1 id="allListingHeading">All Listings</h1>
         <div class="allListingContainer">
             <% for(list of listings) { %>
                 <a class="listingCard" href="/list/<%= list._id %>">
@@ -12,7 +12,7 @@
                     </div> 
                     <div class="listingInfoBox">
                         <h6 class="mb-0 mt-0"><%= list.title %></h6> 
-                        <p class="mb-0 mt-0">$<%= list.price %>/month <b class="gstPrice active">+18%GST</b></p>
+                        <p class="mb-0 mt-0"><i class="fa-solid fa-indian-rupee-sign"></i> <%= list.price %>/month <b class="gstPrice active">+18%GST</b></p>
                     </div>
                 </a>
             <% } %>
