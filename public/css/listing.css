@@ -24,7 +24,6 @@ html{
     flex-wrap: wrap;
     row-gap: 10px;
     column-gap: 10px;
-    border: 1px solid black;
 }
 
 .listingCard{

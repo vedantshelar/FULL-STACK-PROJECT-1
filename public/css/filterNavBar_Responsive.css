@@ -86,14 +86,36 @@
     .filterNavBar {
         display: flex;
         flex-direction: column;
+        height: 100px;
     }
+
+    .optionsBox {
+        align-items: center;
+        width: 100%;
+        height:65%;
+        overflow-y: hidden;
+    }
+
+    .optionsBox::-webkit-scrollbar {
+        height: 0px;
+    }
+
+    .option {
+        height: 100%;
+        padding: 2px 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 5px;
+    }
+
  
     .taxSwitchAndFilterContainer {
         width: 70%;
         padding-right: 0px;
         justify-content: space-around;
         margin: auto;
-        height: 40%;
+        height: 30%;
         padding-right: 0px;
     }
 
@@ -111,26 +133,21 @@
         height: 100%;
     }
 
-    .optionsBox {
-        align-items: center;
-        width: 100%;
-        height: 55%;
-        overflow-y: hidden;
+    .filterBox {
+        width: 25%;
+        border-radius: 10px;
+        height: 90%;
+        padding: 0px;
     }
 
-    .optionsBox::-webkit-scrollbar {
-        height: 0px;
+    .filterBox>h5 {
+        font-size: 1rem;
+        margin-right: 0px;
+        margin: 0px;
     }
 
-    .option {
-        width: 200px;
-        height: 100%;
-        padding: 2px 5px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+    .filterBox>i {
+        display: none;
     }
-
-
 
 }

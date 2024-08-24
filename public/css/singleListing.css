@@ -27,7 +27,7 @@ html{
 
 .singleListingContainer{
     width: 50%;
-    height: 90%;
+    /* height: 90%; */
 }
 
 .singleListingImgBox{
@@ -44,12 +44,6 @@ html{
 
 .singleListingInfoBox{
 padding: 10px;
-}
-
-.singleListingInfoBox > p {
-    padding: 0px;
-    margin: 0px;
-    line-height: 2;
 }
 
 .singleListingButtonBox{
@@ -135,7 +129,6 @@ padding: 10px;
     row-gap: 5px;
     justify-content:flex-start;
     flex-wrap: wrap;
-
 }
 
 .reviewCard{

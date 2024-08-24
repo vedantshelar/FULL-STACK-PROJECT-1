@@ -3,10 +3,6 @@
         font-size: 14px;
     }
 
-    .allListingContainer{
-
-    }
-
     .listingCard{
         width: 45%;
         box-shadow: 0px 0px 5px rgba(170, 170, 170, 0.589);
@@ -44,7 +40,7 @@
     }
 
     .allListingContainer{
-        justify-content:center;
+        justify-content:flex-start;
     }
 
     .listingCard{
@@ -65,7 +61,7 @@
     }
 
     .allListingContainer{
-        justify-content:center;
+        justify-content:flex-start;
     }
 
     .listingCard{

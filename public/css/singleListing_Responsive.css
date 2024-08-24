@@ -1,0 +1,131 @@
+@media only screen and (max-width:1500px) {
+
+    .singleListingHeadingBox {
+        width: 100%;
+    }
+
+    .singleListingContainer {
+        width: 100%;
+    }
+    
+    #imgSlider {
+        height: 450px;
+        border-radius: 10px;
+    } 
+
+    .listingImages{
+        border-radius: 10px;
+    }
+
+    .singleListingInfoBox {
+        padding: 10px;
+        font-size: 2.5rem;
+    }
+
+    .singleListingInfoBox > h5{
+        font-size: 2.5rem;
+        background-color: rgba(211, 211, 211, 0.11);
+        padding: 5px;
+    }
+
+    .editBtn{
+        width: 150px;
+        font-size: 2rem;
+    }
+    
+    .deleteBtn{
+        width: 150px;
+        font-size: 2rem;
+    }
+
+    .allReviewContainer {
+        width: 100%;
+    }
+
+    .reviewCard {
+        width: 47%;
+    }
+
+    .reviewCard>div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width:1300px) {
+
+    .singleListingMainContainer {
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px 0px;
+    }
+
+    .singleListingHeadingBox {
+        width: 100%;
+        padding: 5px 0px;
+        margin: 0px;
+    }
+
+    .singleListingContainer {
+        width: 100%;
+    }
+
+    #imgSlider {
+        height: 250px;
+    }
+
+    .singleListingInfoBox {
+        padding: 10px;
+        font-size: 1.5rem;
+    }
+
+    .singleListingInfoBox > h5{
+        font-size: 1.5rem;
+        background-color: rgba(211, 211, 211, 0.11);
+        padding: 5px;
+    }
+
+    .editBtn{
+        width: 80px;
+        font-size: 1rem;
+    }
+    
+    .deleteBtn{
+        width: 80px;
+        font-size: 1rem;
+    }
+
+    .allReviewContainer {
+        width: 100%;
+        justify-content: center;
+        row-gap: 20px;
+    }
+
+    .reviewCard {
+        width: 100%;
+        border: none;
+        box-shadow: 0px 0px 5px rgba(151, 151, 151, 0.253);
+    }
+    /* edit form */
+    .editForm{
+        font-size: 1.8rem;
+    }
+
+    .editForm > h1{
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .editForm input , .editForm textarea{
+       font-size: 1.8rem;
+    }
+
+    .editBtn2{
+        margin-top: 10px;
+        font-size: 1.3rem;
+    }
+}
