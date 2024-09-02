@@ -1,0 +1,26 @@
+<%- layout('/layout/boilureplate.ejs') %>
+
+    <body>
+        <div class="card profileBox">
+            <h5 class="card-header">Profile</h5>
+            <div class="card-body">
+                <h5 class="card-title">Username : <i>
+                        <%=user.username%>
+                    </i></h5>
+                <p class="card-text mb-0"><b>Email :</b>
+                    <%=user.email%>
+                </p>
+                <p class="card-text"><b>Phone Number :</b>
+                    <%=user.phone%>
+                </p>
+                <div class="profileBtns">
+                    <form action="/<%=user._id%>/profile/edit" method="get">
+                        <button class="btn btn-success btn-sm" type="submit">Edit Profile</button>
+                    </form>
+                    <form action="/<%=user._id%>/profile/delete?_method=DELETE" method="post">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete Account</button>
+                    </form>
+                </div> 
+            </div>
+        </div>
+    </body>

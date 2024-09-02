@@ -3,25 +3,22 @@ const mogoose = require('mongoose');
 const Review = require('./Review');
 
 const listingSchema = new mongoose.Schema({
-    title: {
+    propertyArea: {
         type: String,
         required: true,
-        minLength: 1
+        enum:["1BHK","2BHK","3BHK","4BHK","NOT APPLICABLE"]
     },
     description: {
-        type: String,
+        type: String, 
         required: true,
         minLength: 1
     },
-    listingImages:{
-        type:[
-            {
-                filename:String,
-                link:String
-            }
-        ], 
-        required:true
-    },
+    listingImages: [
+        {
+            filename: String,
+            link: String
+        } 
+    ],
     price: {
         type: Number,
         required: true,
@@ -44,15 +41,15 @@ const listingSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Review'
         }
-    ], 
-    city:{
-        type:String,
-        required:true
+    ],
+    city: {
+        type: String,
+        required: true
     },
-    category:{
-        type:String,
-        enum:["farms","beachfront","lakefront","camping","mountain","town","tower","cities","others"],
-        required:true
+    category: {
+        type: String,
+        enum: ["farms", "beachfront", "lakefront", "camping", "mountain", "town", "tower", "cities", "others"],
+        required: true
     }
 });
 
@@ -60,11 +57,11 @@ const listingSchema = new mongoose.Schema({
 
 listingSchema.post('findOneAndDelete', async (listingData) => {
 
-    const result = await Review.deleteMany({ _id: { $in: listingData.reviews } });
-    console.log(result);
+    if(listingData.reviews.length!=0){
+        const result = await Review.deleteMany({ _id: { $in: listingData.reviews } });
+    }
 
-    console.log("deleted reviews associated with deleted listing");
-}) 
+})
 
 const Listing = mongoose.model('Listing', listingSchema);
 

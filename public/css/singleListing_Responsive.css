@@ -1,58 +1,3 @@
-@media only screen and (max-width:1500px) {
-
-    .singleListingHeadingBox {
-        width: 100%;
-    }
-
-    .singleListingContainer {
-        width: 100%;
-    }
-    
-    #imgSlider {
-        height: 450px;
-        border-radius: 10px;
-    } 
-
-    .listingImages{
-        border-radius: 10px;
-    }
-
-    .singleListingInfoBox {
-        padding: 10px;
-        font-size: 2.5rem;
-    }
-
-    .singleListingInfoBox > h5{
-        font-size: 2.5rem;
-        background-color: rgba(211, 211, 211, 0.11);
-        padding: 5px;
-    }
-
-    .editBtn{
-        width: 150px;
-        font-size: 2rem;
-    }
-    
-    .deleteBtn{
-        width: 150px;
-        font-size: 2rem;
-    }
-
-    .allReviewContainer {
-        width: 100%;
-    }
-
-    .reviewCard {
-        width: 47%;
-    }
-
-    .reviewCard>div {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-}
 
 @media only screen and (max-width:1300px) {
 
@@ -75,7 +20,7 @@
     }
 
     #imgSlider {
-        height: 250px;
+        height: 550px;
     }
 
     .singleListingInfoBox {
@@ -128,4 +73,12 @@
         margin-top: 10px;
         font-size: 1.3rem;
     }
+}
+
+@media only screen and (max-width:900px) {
+
+    #imgSlider {
+        height: 350px;
+    }
+
 }

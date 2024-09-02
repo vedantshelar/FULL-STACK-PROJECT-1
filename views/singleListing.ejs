@@ -7,16 +7,6 @@
             </div>
             <div class="singleListingContainer">
                 <div id="imgSlider" class="carousel slide">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#imgSlider" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#imgSlider" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#imgSlider" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
-                        <button type="button" data-bs-target="#imgSlider" data-bs-slide-to="3"
-                            aria-label="Slide 4"></button>
-                    </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src="<%=singleListing.listingImages[0].link%>" class="d-block w-100 listingImages"
@@ -50,17 +40,18 @@
                     <h5>
                         <b>Description : </b><%=singleListing.description%>
                     </h5> 
+                    <b>Property Area : <%=singleListing.propertyArea%></b><br>
                     <b>Created-By : <%=singleListing.owner.username%></b> <br>
                     <b>Phone Number : <%=singleListing.owner.phone%></b>
-                    <p>$<%=singleListing.price %>/month</p>
-                    <p>
-                        Country : <%= singleListing.country %>
+                    <p class="mb-0"><b>RENT : $<%=singleListing.price %></b>/month</p>
+                    <p class="mb-0">
+                        <b>Country :</b> <%= singleListing.country %>
                     </p>
+                    <p class="mb-0">
+                        <b>City : </b><%= singleListing.city %>
+                    </p> 
                     <p>
-                        City : <%= singleListing.city %>
-                    </p>
-                    <p>
-                       Address : <%= singleListing.location %>
+                      <b>Address :</b> <%= singleListing.location %>
                     </p>
                 </div>
                 <div class="singleListingButtonBox">

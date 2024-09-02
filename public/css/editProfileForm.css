@@ -1,0 +1,56 @@
+#editProfileForm {
+    border: 1px solid rgba(177, 177, 177, 0.411);
+    box-shadow: 0px 0px 5px rgb(131, 131, 131);
+    font-size: 1.2rem;
+    width: 90%;
+    padding: 25px 10px;
+    margin: 30px auto;
+}
+
+.profilePasswordControls{
+    border: 1px solid rgba(177, 177, 177, 0.411);
+    box-shadow: 0px 0px 5px rgb(131, 131, 131);
+    font-size: 1.2rem;
+    width: 90%;
+    padding: 25px 10px;
+    margin: 30px auto;
+}
+
+@media only screen and (max-width:1000px) {
+    #editProfileForm {
+        border: 1px solid rgba(177, 177, 177, 0.411);
+        box-shadow: 0px 0px 5px rgb(131, 131, 131);
+        font-size: 1.5rem;
+        width: 90%;
+        padding: 25px 10px;
+        margin: 30px auto;
+    }
+
+    #editProfileForm input {
+        font-size: 1.5rem;
+    }
+
+    #editProfileForm button {
+        font-size: 1.5rem;
+        margin-top: 10px;
+    }
+
+    .profilePasswordControls{
+        border: 1px solid rgba(177, 177, 177, 0.411);
+        box-shadow: 0px 0px 5px rgb(131, 131, 131);
+        font-size: 1.5rem;
+        width: 90%;
+        padding: 25px 10px;
+        margin: 30px auto;
+    }
+
+    .profilePasswordControls input{
+        font-size: 1.5rem;
+    }
+
+    .profilePasswordControls button{
+        font-size: 1.5rem;
+        margin-top: 10px;
+    }
+
+}

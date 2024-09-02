@@ -14,7 +14,7 @@ const reviewRoutes = require('./routes/reviewRoutes');
 const authenticationRoutes = require('./routes/authenticatingRoutes');
 const app = express();
 if (process.env.NODE_ENV != "production") {
-    require('dotenv').config() 
+    require('dotenv').config()
 }
 
 //evironments variables
@@ -61,7 +61,7 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error');
     next();
 })
- 
+
 // mongoose connection        
 
 async function main() {
@@ -86,4 +86,4 @@ app.use('/review', reviewRoutes);
 app.use(async (err, req, res, next) => {
     res.locals.errorMsg = err.message;
     res.render('errorPage.ejs');
-}) 
+})   

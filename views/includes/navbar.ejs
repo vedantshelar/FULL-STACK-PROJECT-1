@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/list">
       <i class="fa-brands fa-airbnb" style="color: #f92f76; font-size: 30px;"></i><b> RENTO</b>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -17,7 +17,10 @@
             <a class="nav-link" href="/list/new">Create Listing</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/logout">Log-Out</a>
+            <a class="nav-link" href="/logout">Log-Out</a> 
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/<%=currUser._id%>/profile">Profile</a>
           </li>
           <% } else {%>
             <li class="nav-item">

@@ -1,4 +1,5 @@
 const Listing = require('../models/Listing.js');
+const listingSchemaValidator = require('../schemaValidators/listingSchemaValidator.js');
 const Review = require('../models/Review');
 const myError = require('../myError.js');
 
@@ -13,7 +14,10 @@ let index = async (req, res, next) => {
 
 let searchedListings = async (req, res, next) => {
     try {
-        const listings = await Listing.find({ city: req.query.searchInput });
+        let inputCity = req.query.searchInput;
+        inputCity = inputCity.toLowerCase().trim();
+
+        const listings = await Listing.find({ city: inputCity });
         res.render('index.ejs', { listings: listings });
     } catch (error) {
         next(error);
@@ -54,11 +58,21 @@ let saveListingInfo = async (req, res, next) => {
         }
 
         req.body.listingImages = listingImagesArray;
+        req.body.country = req.body.country.toLowerCase();
+        req.body.city = req.body.city.toLowerCase();
+        req.body.category = req.body.category.toLowerCase();
+        req.body.owner = req.user._id;
 
-        let newListing = new Listing(req.body);
-        newListing.owner = req.user._id;
-        await newListing.save();
-        res.redirect('/list');
+        let result = listingSchemaValidator.validate(req.body);
+        if (result.error) {
+            let validationError = result.error.details[0].message;
+            next(new myError(validationError));
+        } else {
+            let newListing = new Listing(req.body);
+            await newListing.save();
+            res.redirect('/list');
+        }
+
     } catch (error) {
         next(error)
     }
@@ -92,36 +106,45 @@ let editListingForm = async (req, res, next) => {
 
 let saveEditedListingInfo = async (req, res, next) => {
     try {
-        let tempLength = 0;
-        for (key in req.files) {
-            tempLength++;
-        }
+        req.body.owner = req.user._id;
+        req.body.propertyArea = req.body.propertyArea.toUpperCase();
+        let result = listingSchemaValidator.validate(req.body);
+        if (result.error) {
+            let validationError = result.error.details[0].message;
+            next(new myError(validationError));
+        } else {
 
-        const listId = req.params.listId;
-        const editedListing = await Listing.findByIdAndUpdate(listId, { $set: { title: req.body.title, description: req.body.description, price: req.body.price, country: req.body.country, location: req.body.location, city: req.body.city, category: req.body.category } }, { runValidators: true });
-        if (tempLength > 0) {
-            if (tempLength == 4) {
-                let listingImagesArray = [];
-
-                for (listingImg in req.files) {
-                    listingImagesArray.push({
-                        link: req.files[listingImg][0].path,
-                        filename: req.files[listingImg][0].filename
-                    })
-                }
-                editedListing.listingImages = listingImagesArray;
-                await editedListing.save();
-                req.flash('success', 'successfully edited listing information');
-                res.redirect(`/list/${listId}`);
-            } else {
-                req.flash('error', `you can not update only ${tempLength} listing images,you can only update all listing images`);
-                res.redirect(`/list/${listId}`);
+            let tempLength = 0;
+            for (key in req.files) {
+                tempLength++;
             }
 
-        } else {
-            console.log("req.files does not exist");
-            req.flash('success', 'successfully edited listing information');
-            res.redirect(`/list/${listId}`);
+            const listId = req.params.listId;
+            const editedListing = await Listing.findByIdAndUpdate(listId, { $set: { propertyArea: req.body.propertyArea, description: req.body.description, price: req.body.price, country: req.body.country, location: req.body.location, city: req.body.city, category: req.body.category } }, { runValidators: true });
+            if (tempLength > 0) {
+                if (tempLength == 4) {
+                    let listingImagesArray = []; 
+
+                    for (listingImg in req.files) {
+                        listingImagesArray.push({
+                            link: req.files[listingImg][0].path,
+                            filename: req.files[listingImg][0].filename
+                        })
+                    }
+                    editedListing.listingImages = listingImagesArray;
+                    await editedListing.save();
+                    req.flash('success', 'successfully edited listing information');
+                    res.redirect(`/list/${listId}`);
+                } else {
+                    req.flash('error', `you can not update only ${tempLength} listing images,you can only update all listing images`);
+                    res.redirect(`/list/${listId}`);
+                }
+
+            } else {
+                console.log("req.files does not exist");
+                req.flash('success', 'successfully edited listing information');
+                res.redirect(`/list/${listId}`);
+            }
         }
 
     } catch (error) {
@@ -180,7 +203,7 @@ let filterForm = async (req, res) => {
 }
 
 let filterResult = async (req, res, next) => {
-    try { 
+    try {
         let rentPrice = parseInt(req.query.rentPrice);
 
         let result = await Listing.find({ country: req.query.country, city: req.query.city, price: { $lte: rentPrice } })

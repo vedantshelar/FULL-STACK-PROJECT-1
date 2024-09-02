@@ -10,15 +10,18 @@ const reviewSchema = mongoose.Schema({
         type: Number
     },
     comment: {
-        type: String
+        type: String,
+        required:true
     },
     createdAt: {
         type: String,
-        default: currentDate
+        default: currentDate,
+        required:true
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required:true
     }
 });
 

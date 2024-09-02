@@ -5,8 +5,14 @@
         <form method="post" action="/list/new" enctype="multipart/form-data" class="editForm">
             <h1 style="color: rgb(80, 80, 80);">Add Your Place</h1>
             <div class="mb-3">
-                <label for="email" class="form-label">Title</label>
-                <input type="text" class="form-control" id="email" name="title" aria-describedby="emailHelp">
+                <label for="propertyArea" class="form-label">Property Area</label>
+                <select class="form-select" name="propertyArea" id="propertyArea">
+                    <option value="1BHK">1BHK</option>
+                    <option value="2BHK">2BHK</option>
+                    <option value="3BHK">3BHK</option>
+                    <option value="4BHK">4BHK</option>
+                    <option value="NOT APPLICABLE">NOT APPLICABLE</option>
+                  </select>
             </div> 
             <div class="mb-3"> 
                 <label for="description" class="form-label">Description</label>
@@ -24,7 +30,7 @@
                 <label for="listingImage3" class="form-label">Upload Image-3</label> 
                 <input class="form-control" type="file" name="listingImage3" id="listingImage3" required>
             </div>
-            <div class="mb-3">
+            <div class="mb-3"> 
                 <label for="listingImage4" class="form-label">Upload Image-4</label> 
                 <input class="form-control" type="file" name="listingImage4" id="listingImage4" required>
             </div> 
@@ -65,8 +71,8 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label for="location" class="form-label">Location</label>
-                <input type="text" class="form-control" id="location" name="location" aria-describedby="emailHelp">
+                <label for="location" class="form-label">Property Address</label>
+                <textarea class="form-control" id="location1" name="location" rows="3" ></textarea>
             </div> 
             <button type="submit" class="btn editBtn2" style="color: white; background-color: rgb(231, 83, 83);">Add New Listing</button>
         </form>

@@ -5,8 +5,8 @@
     <form method="post" action="/list/<%=listing._id%>/edit" enctype="multipart/form-data" class="editForm">
         <h1 style="color: rgb(80, 80, 80);">Edit Your Place</h1>
         <div class="mb-3">
-            <label for="email" class="form-label">Title</label>
-            <input type="text" class="form-control" id="email" name="title" value="<%= listing.title %>">
+            <label for="propertyArea" class="form-label">Property Area</label>
+            <input type="text" class="form-control" id="propertyArea" name="propertyArea" value="<%= listing.propertyArea %>">
         </div> 
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
@@ -55,8 +55,8 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="location" class="form-label">Location</label>
-            <input type="text" class="form-control" id="location" name="location" value="<%= listing.location %>">
+            <label for="location" class="form-label">Property Address</label>
+            <textarea class="form-control" id="location1" name="location" rows="3" ><%= listing.location %></textarea>   
         </div> 
         <button type="submit" class="btn editBtn2" style="color: white; background-color: rgb(231, 83, 83);">Edit Listing</button>
     </form>

@@ -1,0 +1,22 @@
+<%- layout('/layout/boilureplate.ejs') %>
+
+    <body>
+        <form action="/<%=user._id%>/profile/edit?_method=PUT" method="post" id="editProfileForm">
+            <div class="mb-3">
+                <label for="profileUserName" class="form-label">UserName</label>
+                <input type="text" name="username" class="form-control" id="profileUserName" value="<%=user.username%>">
+            </div>
+            <div class="mb-3">
+                <label for="profileEmail" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" id="profileEmail" value="<%=user.email%>">
+            </div>
+            <div class="mb-3">
+                <label for="profilePhone" class="form-label">Phone Number</label>
+                <input type="number" name="phone" class="form-control" id="profilePhone" value="<%=user.phone%>">
+            </div>
+            <div class="mb-3">
+                <a href="/<%=user._id%>/profile/edit/password" style="color: rgb(134, 134, 134); ">Change Password</a>
+            </div>
+            <button type="submit" class="btn btn-success" style="width: 100%;">Edit</button>
+        </form>
+    </body> 
