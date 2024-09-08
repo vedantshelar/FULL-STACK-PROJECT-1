@@ -227,4 +227,4 @@ module.exports = {
     showingListingByCategoryInput: showingListingByCategoryInput,
     filterForm: filterForm,
     filterResult: filterResult
-}
+} 

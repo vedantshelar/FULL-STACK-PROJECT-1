@@ -56,12 +56,10 @@ let loginForm = (req, res) => {
 let authenticatingUser = async (req, res) => {
 
     req.flash('success', 'successfully logged in');
-    console.log(res.locals.redirectUrl);
-
-    res.redirect(res.locals.redirectUrl);
+    res.redirect('/list');
 }
-
-let logoutUser = (req, res) => {
+ 
+let logoutUser = (req, res) => { 
     req.logout((err) => {
         if (err) {
             req.flash("error", 'can not logged out');
@@ -174,7 +172,7 @@ let destroyUser = async (req, res, next) => {
     } catch (error) {
         next(error);
     }
-} 
+}
 
 module.exports = {
     signupForm,

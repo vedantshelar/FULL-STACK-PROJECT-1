@@ -8,33 +8,46 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 navBar"> 
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 navBar">
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="/list">Listings</a>
-        </li> 
+        </li>
         <% if(currUser) {%>
           <li class="nav-item">
             <a class="nav-link" href="/list/new">Create Listing</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/logout">Log-Out</a> 
+            <a class="nav-link" href="/logout">Log-Out</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/<%=currUser._id%>/profile">Profile</a>
           </li>
           <% } else {%>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li> 
-            <li class="nav-item">
-              <a class="nav-link" href="/signup">Sign-Up </a>
-            </li> 
-            <% } %>
+            <% if(admin) {%>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/logout">Admin-Log-Out</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/signup">Admin Sign-Up </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/control">Controlls</a>
+              </li>
+              <%} else {%>
+                <li class="nav-item">
+                  <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/signup">Sign-Up </a>
+                </li>
+                <%}%>
+                  <% } %>
       </ul>
       <form class="d-flex" name="searchForm" action="/list/search" method="get">
-        <input class="form-control me-2" type="search" name="searchInput" placeholder="Search by city" aria-label="Search">
+        <input class="form-control me-2" type="search" name="searchInput" placeholder="Search by city"
+          aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> 
+      </form>
     </div>
   </div>
 </nav>

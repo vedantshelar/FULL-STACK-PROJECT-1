@@ -1,0 +1,18 @@
+@media only screen and (max-width:1000px){
+    .adminContainer{
+        margin-top: 20px;
+        border: 1px solid rgba(65, 65, 65, 0.521);
+        padding: 25px 15px;
+        font-size: 2rem;
+        border-radius: 5px; 
+        
+    }
+
+    .adminContainer input{
+        font-size: 2rem;
+    }
+
+    .adminContainer button{
+        font-size: 2rem;
+    }
+}

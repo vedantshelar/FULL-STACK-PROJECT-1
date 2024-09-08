@@ -38,29 +38,35 @@
                 </div>
                 <div class="singleListingInfoBox">
                     <h5>
-                        <b>Description : </b><%=singleListing.description%>
-                    </h5> 
+                        <b>Description : </b>
+                        <%=singleListing.description%>
+                    </h5>
                     <b>Property Area : <%=singleListing.propertyArea%></b><br>
                     <b>Created-By : <%=singleListing.owner.username%></b> <br>
                     <b>Phone Number : <%=singleListing.owner.phone%></b>
                     <p class="mb-0"><b>RENT : $<%=singleListing.price %></b>/month</p>
                     <p class="mb-0">
-                        <b>Country :</b> <%= singleListing.country %>
+                        <b>Country :</b>
+                        <%= singleListing.country %>
                     </p>
                     <p class="mb-0">
-                        <b>City : </b><%= singleListing.city %>
-                    </p> 
+                        <b>City : </b>
+                        <%= singleListing.city %>
+                    </p>
                     <p>
-                      <b>Address :</b> <%= singleListing.location %>
+                        <b>Address :</b>
+                        <%= singleListing.location %>
                     </p>
                 </div>
                 <div class="singleListingButtonBox">
-                    <form action="/list/<%= singleListing._id %>/edit" method="get">
-                        <button class="editBtn">Edit</button>
-                    </form>
-                    <form action="/list/<%=singleListing._id%>?_method=DELETE" method="post">
-                        <button class="deleteBtn">Delete</button>
-                    </form>
+                    <% if(!admin) { %>
+                        <form action="/list/<%= singleListing._id %>/edit" method="get">
+                            <button class="editBtn">Edit</button>
+                        </form>
+                        <%}%>
+                            <form action="/list/<%=singleListing._id%>?_method=DELETE" method="post">
+                                <button class="deleteBtn">Delete</button>
+                            </form>
                 </div>
                 <hr>
                 <div class="reviewMainContainer">
@@ -79,12 +85,14 @@
                                 <input type="radio" id="first-rate5" name="rating" value="5" />
                                 <label for="first-rate5" title="Amazing">5 stars</label>
                             </fieldset>
-                        </div> 
+                        </div>
                         <div class="reviewCommentBox">
                             <p class="mb-0">Comment</p>
                             <textarea name="comment" id="commentBox"></textarea>
                         </div>
-                        <button type="submit" id="reviewSubmitBtn">Submit</button>
+                        <% if(!admin) { %>
+                            <button type="submit" id="reviewSubmitBtn">Submit</button>
+                            <% } %>
                     </form>
                 </div>
                 <hr>
@@ -101,13 +109,13 @@
                             <p class="mb-0">
                                 <%= review.comment %>
                             </p>
-                            <div>
+                            <div> 
                                 <span>
                                     <p class="starability-result" data-rating="<%= review.rating %>">
                                         Rated: <%= review.rating %> stars
-                                      </p>
+                                    </p>
                                 </span>
-                                <span> 
+                                <span>
                                     <%= review.createdAt %>
                                 </span>
                             </div>
@@ -117,6 +125,12 @@
                                     <button type="submit">delete</button>
                                 </form>
                                 <% } %>
+                                    <% if(admin) { %>
+                                        <form class="reviewButtonGroup" method="post"
+                                            action="/review/<%=review._id%>/<%=singleListing._id%>?_method=DELETE">
+                                            <button type="submit">delete</button>
+                                        </form>
+                                        <% } %>
                         </div>
                         <% } %>
 

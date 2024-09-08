@@ -1,0 +1,20 @@
+<%- layout('layout/boilureplate.ejs') %>
+
+    <body>
+        <div class="adminControlContainer">
+            <% for(adminInfo of admins) { %>
+                <% if(!(adminInfo.adminName===admin.adminName)) { %>
+                    <form action="/admin/<%=adminInfo._id%>/delete?_method=DELETE" method="post"
+                        class="adminControlBox">
+                        <div>
+                            <b>Admin Name : </b> 
+                            <span>
+                                <%= adminInfo.adminName %>
+                            </span>
+                        </div>
+                        <button type="submit">delete</button>
+                    </form>
+                    <% }%>
+                        <%}%>
+        </div>
+    </body>

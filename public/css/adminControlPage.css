@@ -1,0 +1,37 @@
+.adminControlContainer{
+   border-radius: 5px;
+   padding: 15px 10px;
+   width: 95vw;
+   display: flex;
+   flex-direction: column;
+   align-items:center;
+}
+
+.adminControlBox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 80%;
+    height: 55px;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: rgba(226, 226, 226, 0.185);
+    border: 1px solid rgba(68, 68, 68, 0.123);
+}
+
+.adminControlBox > button{
+    padding: 0px 5px;
+    border: none;
+    background-color: rgba(255, 0, 0, 0.534);
+    color: white;
+}
+
+@media only screen and (max-width:1000px){
+    .adminControlBox{
+        font-size: 2rem;
+        width: 100%;
+    }
+}

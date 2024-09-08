@@ -1,15 +1,12 @@
 const Listing = require('./models/Listing');
 
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated() || req.session.admin) {
         next();
     } else {
         req.session.redirectUrl = req.originalUrl;
-        console.log("original path : "+req.originalUrl);
-        console.log("req.path : "+req.path);
-        
-        
-
+        console.log("original path : " + req.originalUrl);
+        console.log("req.path : " + req.path);
         req.flash('error', 'you are not logged in');
         res.redirect('/login');
     }
@@ -23,7 +20,7 @@ function saveRedirectedUrl(req, res, next) {
         next();
     } else {
         res.locals.redirectUrl = "/list";
-        next(); 
+        next();
     }
 }
 
@@ -33,13 +30,16 @@ async function isListingOwner(req, res, next) {
     const listId = req.params.listId;
     const listing = await Listing.findById(listId);
     if (listing) {
-        if (listing.owner.equals(req.user._id)) {
-            console.log("owner");
+        if (req.session.admin) {
             next();
         } else {
-            req.flash('error', 'you are not a owner of this listing');
-            res.redirect(`/list/${listId}`);
-        }
+            if (listing.owner.equals(req.user._id)) {
+                next();
+            } else {
+                req.flash('error', 'you are not a owner of this listing');
+                res.redirect(`/list/${listId}`);
+            }
+        }  
 
     } else {
         req.flash('error', 'No such listing is availble');

@@ -9,9 +9,11 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/User');
+const Admin = require('./models/Admin');
 const listingRoutes = require('./routes/listingRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const authenticationRoutes = require('./routes/authenticatingRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 const app = express();
 if (process.env.NODE_ENV != "production") {
     require('dotenv').config()
@@ -27,14 +29,14 @@ app.use(express.static('public'));
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 app.engine('ejs', engine);
-app.use(cookieParser("code"));
+app.use(cookieParser(process.env.SECRET));
 app.use(session({
-    secret: "code",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({
+    store: MongoStore.create({ 
         crypto: {
-            secret: 'code'
+            secret: process.env.SECRET
         },
         mongoUrl: mongoDbUrl,
         touchAfter: 24 * 3600
@@ -53,9 +55,9 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// flash message 
 
 app.use((req, res, next) => {
+    res.locals.admin = req.session.admin;
     res.locals.currUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
@@ -80,10 +82,13 @@ app.listen(3000, () => {
 // routes middleware 
 
 app.use('/', authenticationRoutes);
+app.use('/admin', adminRoutes);
 app.use('/list', listingRoutes);
 app.use('/review', reviewRoutes);
 
 app.use(async (err, req, res, next) => {
+    console.log(err);
+
     res.locals.errorMsg = err.message;
     res.render('errorPage.ejs');
 })   

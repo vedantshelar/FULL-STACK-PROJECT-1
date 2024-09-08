@@ -12,15 +12,15 @@ router.route('/signup')
     .get(authenticatingControllers.signupForm)
     .post(authenticatingControllers.saveNewUserInfo)
 
-
+ 
 //API to render login form
-//API to authentication user
+//API to authentication user 
 
 router.route('/login')
     .get(authenticatingControllers.loginForm)
-    .post(middleware.saveRedirectedUrl, passport.authenticate("local", { failureRedirect: '/login', failureFlash: true }), authenticatingControllers.authenticatingUser);
+    .post(middleware.saveRedirectedUrl, passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), authenticatingControllers.authenticatingUser);
 
-//API to log out user 
+//API to log out user  
 
 router.get('/logout', middleware.isLoggedIn, authenticatingControllers.logoutUser);
 
@@ -51,4 +51,3 @@ router.route('/:userId/profile/delete')
     .delete(authenticatingControllers.destroyUser);
 
 module.exports = router;
- 

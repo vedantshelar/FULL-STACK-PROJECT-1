@@ -1,0 +1,15 @@
+<%- layout('layout/boilureplate.ejs') %>
+ 
+    <h1>admin sign up page</h1>
+ 
+    <form action="/admin/signUp" method="post" class="adminContainer">
+        <div class="mb-3">
+            <label for="adminName" class="form-label">Admin Name</label>
+            <input type="text" class="form-control" id="adminName" name="adminName">
+        </div>
+        <div class="mb-3">
+            <label for="adminCode" class="form-label">Admin Code</label>
+            <input type="password" class="form-control" id="adminCode" name="adminCode">
+        </div>
+        <button type="submit" class="btn btn-success">Sign in</button>
+    </form>
