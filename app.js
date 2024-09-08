@@ -14,6 +14,7 @@ const listingRoutes = require('./routes/listingRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const authenticationRoutes = require('./routes/authenticatingRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const path = require('path');
 const app = express();
 if (process.env.NODE_ENV != "production") {
     require('dotenv').config()
@@ -25,7 +26,7 @@ let mongoDbUrl = process.env.MONGODB_URL;
 
 //middlewares   
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname,'public')));
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 app.engine('ejs', engine);
