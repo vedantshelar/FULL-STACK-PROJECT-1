@@ -12,9 +12,9 @@ router.route('/login')
 router.route('/logout') 
     .get(adminControlls.adminLogout)
 
-// router.route('/signUp')
-//     .get(adminControlls.adminSignUpForm)
-//     .post(adminControlls.saveAdminInfo)
+router.route('/signUp')
+    .get(adminControlls.adminSignUpForm) 
+    .post(adminControlls.saveAdminInfo) 
 
 router.route('/signUp')
     .get(adminControlls.saveAdminInfo)

@@ -33,24 +33,11 @@ let adminSignUpForm = (req, res) => {
 }
 
 let saveAdminInfo = async (req, res, next) => {
-    // try {
-    //     let admin = new Admin(req.body);
-    //     admin = await admin.save();
-    //     req.session.admin = admin;
-    //     req.flash('success', 'admin successfully login')
-    //     res.redirect('/list');
-    // } catch (error) {
-    //     next(error)
-    // }
-
     try {
-        let admin = new Admin({ 
-            adminName:'superAdmin',
-            adminCode:'superAdmin'
-        });
+        let admin = new Admin(req.body);
         admin = await admin.save();
         req.session.admin = admin;
-        req.flash('success', 'admin successfully login')
+        req.flash('success', 'admin successfully login') 
         res.redirect('/list');
     } catch (error) {
         next(error)
