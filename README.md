@@ -1,4 +1,3 @@
-RENTO
 RENTO is a web application that enables users to upload, manage, and browse properties. The platform also provides filtering and searching functionality to find properties easily and includes an admin panel for property management.
 
 🚀 Features
